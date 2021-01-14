@@ -4,7 +4,7 @@ on:
     - cron: '5 0,15 * * *'
   workflow_dispatch:
  
-jobs:
+job:
   repo-sync:
     runs-on: ubuntu-latest
     env:
