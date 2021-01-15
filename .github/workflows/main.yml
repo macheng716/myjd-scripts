@@ -3,7 +3,6 @@ on:
   schedule:
     - cron: '5 0,15 * * *'
   workflow_dispatch:
- 
 jobs:
   repo-sync:
     runs-on: ubuntu-latest
@@ -15,7 +14,6 @@ jobs:
       editIndexJsFile: ${{ secrets.editIndexJsFile }}
     steps:
       - uses: actions/checkout@v2
-     
       - name: sync lxk0301-scripts
         uses: repo-sync/github-sync@v2
         if: env.PAT
@@ -23,11 +21,10 @@ jobs:
           source_repo: "https://github.com/xmgwbm/Jd-Actions.git"
           source_branch: "master"
           destination_branch: "master"
-          github_token: ${{ env.PAT }}
-      
-      - uses: actions/checkout@v2
-        with:
-          repository: ${{ github.repository }}
+          github_token: ${{ env.PAT }}    
+          - uses:actions/checkout@v2
+          with:
+          repository: ${{ github.repository }}
           ref: master
       
       - name: 修改index.js文件信息
