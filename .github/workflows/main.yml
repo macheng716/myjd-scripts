@@ -16,11 +16,11 @@ jobs:
     steps:
       - uses: actions/checkout@v2
      
-      - name: sync lxk0301-scripts
+      - name: sync LXK9301-scripts
         uses: repo-sync/github-sync@v2
         if: env.PAT
         with:
-          source_repo: "https://github.com/lxk0301/jd_scripts.git"
+          source_repo: "https://github.com/LXK9301/jd_scripts.git"
           source_branch: "master"
           destination_branch: "master"
           github_token: ${{ env.PAT }}
@@ -42,7 +42,6 @@ jobs:
           -e 's#        eval(#//        eval(#' \
           -e 's#      })#//      })#' \
           index.js
-
       - name: 提交index.js文件
         if: env.editIndexJsFile == 'true'
         run: |
@@ -64,7 +63,6 @@ jobs:
             -H "Authorization: token ${{ env.PAT }}" \
             -d '{"ref":"master"}' \
             https://api.github.com/repos/${{ github.repository }}/actions/workflows/deploy_tencent_scf.yml/dispatches
-
       - name: Notify To Telegram
         if: env.DEPLOY_TG_USER_ID && env.DEPLOY_TG_BOT_TOKEN
         run: |
