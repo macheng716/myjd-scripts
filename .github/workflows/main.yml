@@ -20,7 +20,6 @@ jobs:
         uses: repo-sync/github-sync@v2
         if: env.PAT
         with:
-          source_repo: "
           source_repo: "https://gitee.com/lxk0301/jd_scripts.git"
           source_branch: "master"
           destination_branch: "master"
